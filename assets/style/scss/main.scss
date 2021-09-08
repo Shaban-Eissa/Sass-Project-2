@@ -1,0 +1,444 @@
+@import "reset";
+@import "base";
+@import "media";
+
+$red_soft: hsl(7, 99%, 70%);
+$yellow_soft: hsl(51, 100%, 49%);
+$dark_cyan: hsl(167, 40%, 24%);
+$dark_blue: hsl(198, 62%, 26%);
+$footer_cyan: hsl(168, 34%, 41%);
+
+$darker_blue: hsl(212, 27%, 19%);
+$darker_grayish_blue: hsl(213, 9%, 39%);
+$dark_grayish_blue: hsl(232, 10%, 55%);
+$grayish_blue: hsl(210, 4%, 67%);
+$white: hsl(0, 0%, 100%);
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+html,body{
+  overflow-x: hidden;
+}
+
+.hero-section {
+  height: 100vh;
+  background: url("../../images/desktop/image-header.jpg") no-repeat center;
+  background-size: cover;
+  .main-navbar {
+    width: 1200px;
+    margin: auto;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include xxl-max {
+      width: 90%;
+    }
+    .navbar-logo {
+      color: $white;
+    }
+
+    .burger-icon {
+      color: $white;
+      padding: 10px;  
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: none;
+      @include lg-max {
+        display: block;
+      }
+      &.active {
+        background: $white;
+        color: $dark_blue;
+      }
+      &:hover {
+        background: $white;
+        color: $dark_blue;
+      }
+    }
+    .navbar {
+      &.hidden-navbar {
+        display: flex;
+        @include md-max {
+          display: none;
+        }
+        // @include xxl-max {
+        //   display: none;
+        // }
+      }
+      @include lg-max {
+        flex-direction: column;
+        background: $white;
+        position: absolute;
+        left: 7%;
+        top: 100px;
+        width: 85%;
+        box-shadow: 4px 4px 8px overlay(black, 0.3);
+        text-align: center;
+        padding: 30px 0;
+      }
+      .main-navbar-link {
+        display: block;
+        padding: 15px 20px;
+        color: $white;
+
+        @include lg-max {
+          color: $dark_blue;
+          margin: 3px auto;
+          display: inline-block;
+        }
+        &.main-navbar-link-active {
+          background: $white;
+          color: $dark_grayish_blue;
+          border-radius: 40px;
+          font-family: sans-serif;
+          margin-left: 10px;
+          @include lg-max {
+            margin-left: 0;
+            margin-top: 10px;
+            background: $yellow_soft;
+            color: $dark_blue;
+          }
+
+          &:hover {
+            background: darken($white, 10%);
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+  }
+}
+
+.hero-cover {
+  text-align: center;
+  margin-top: 70px;
+  font-size: 72px;
+  color: $white;
+  font-family: sans-serif;
+
+  @include lg-max {
+    font-size: 40px;
+  }
+  .hero-cover-arrow {
+    margin-top: 30px;
+  }
+}
+
+.about-section {
+  .about-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include lg-max {
+      flex-direction: column;
+    }
+
+    .about-box {
+      width: 100%;
+      &.about-box-text {
+        text-align: center;
+        padding: 50px 0;
+        @include lg-max {
+          text-align: left;
+          order: 1;
+        }
+      }
+
+      .inner {
+        width: 60%;
+        padding: 30px;
+        @include lg-max {
+          width: 100%;
+          padding: 15px;
+        }
+
+        h2 {
+          font-size: 48px;
+          font-weight: 700;
+          font-family: sans-serif;
+          color: $darker_blue;
+          @include lg-max {
+            font-size: 36px;
+            
+          }
+        }
+
+        p {
+          margin: 30px 0;
+          color: $dark_grayish_blue;
+          @include lg-max {
+            margin-right: 20px; 
+          }
+        }
+
+        a {
+          color: $dark_blue;
+          text-decoration: none;
+          font-family: sans-serif;
+          text-transform: uppercase;
+          display: inline-block;
+
+          &:after {
+            content: "";
+            display: block;
+            width: 110%;
+            height: 8px;
+            margin-left: -5%;
+            margin-top: -5px;
+            border-radius: 20%;
+          }
+
+          &.yellow {
+            &::after {
+              background: lighten($yellow_soft, 15%);
+            }
+          }
+          &.red {
+            &::after {
+              background: lighten($red_soft, 15%);
+            }
+          }
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      .about-box {
+        .inner {
+          margin-right: auto;
+        }
+      }
+    }
+
+    &:nth-child(odd) {
+      .about-box {
+        .inner {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}
+
+.services-section {
+  .services {
+    display: flex;
+    @include lg-max {
+      flex-direction: column;
+    }
+    .service {
+      width: 100%;
+      position: relative;
+
+      .service-image {
+        height: 100vh;
+        img {
+          height: 100vh;
+          object-fit: cover;
+        }
+      }
+
+      .service-info {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        padding: 30px;
+        text-align: center;
+
+        h3 {
+          font-size: 32px;
+          font-family: sans-serif;
+          margin-bottom: 30px;
+        }
+
+        p {
+          width: 60%;
+          margin: auto;
+          line-height: 30px;
+          @include lg-max {
+            width: 80%;
+          }
+        }
+
+        &.blue {
+          h3 {
+            color: $dark_blue;
+          }
+
+          p {
+            color: lighten($dark_blue, 10%);
+          }
+        }
+
+        &.green {
+          h3 {
+            color: $dark_cyan;
+          }
+          p {
+            color: lighten($dark_cyan, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.testi-section {
+  padding: 120px 0;
+  text-align: center;
+  @include lg-max {
+    padding: 120px 0;
+  }
+  .testi-header {
+    font-family: sans-serif;
+    font-size: 22px;
+    color: $dark_grayish_blue;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    @include lg-max {
+      text-align: center;
+    }
+  }
+
+  .testis {
+    display: flex;
+    width: 80%;
+    margin: 70px auto;
+    @include lg-max {
+      flex-direction: column;
+      margin-right: 60px;
+    }
+    // @include xxl-max {
+    //   flex-direction: column;
+    //   margin-right: 90px;
+    // }
+    @include md-max {
+      flex-direction: column;
+      margin-right: 80px;
+    }
+
+
+
+    .testi {
+      width: 100%;
+      padding: 30px;
+
+      .testi-image {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        margin: 50px auto;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .testi-info {
+        p {
+          line-height: 30px;
+          color: $dark_grayish_blue;
+          width: 80%;
+          margin: auto;
+        }
+
+        .name {
+          margin-top: 70px;
+          margin-bottom: 15px;
+          font-size: 26px;
+          font-family: sans-serif;
+          color: $darker_blue;
+          font-weight: 900;
+        }
+
+        .designation {
+          color: $dark_grayish_blue;
+        }
+      }
+    }
+  }
+}
+
+.projects-section {
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include lg-max {
+      grid-template-columns: 1fr;
+    }
+    .project {
+      position: relative;
+      overflow: hidden;
+      .project-info {
+        position: absolute;
+        bottom: -100px;
+        left: 0;
+        width: 100%;
+        transition: 0.3s;
+        a {
+          display: block;
+          color: $white;
+          background: overlay(black, 0.5);
+          padding: 30px;
+          font-size: 22px;
+          text-decoration: none;
+          @include lg-max {
+            font-size: 18px;
+          }
+        }
+      }
+      &:hover {
+        .project-info {
+          bottom: 0px;
+        }
+      }
+    }
+  }
+}
+
+.main-footer {
+  background: lighten($footer_cyan, 15%);
+  text-align: center;
+  padding: 128px 0;
+  .footer-logo {
+    width: 150px;
+    margin: auto;
+    color: $footer_cyan;
+  }
+}
+
+.footer-navbar {
+  margin-top: 50px;
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  li a {
+    display: inline-block;
+    margin: 0 10px;
+    color: darken($dark_cyan, 10%);
+    transition: 0.3s;
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  li a {
+    display: block;
+    margin: 0 10px;
+    color: lighten($dark_cyan, 10%);
+  }
+}

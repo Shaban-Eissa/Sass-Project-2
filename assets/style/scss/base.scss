@@ -1,0 +1,15 @@
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+@function overlay($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+svg path {
+  fill: currentColor;
+}
